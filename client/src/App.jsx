@@ -4,22 +4,38 @@ import './App.css'
 import Clock from './widgets/Clock'
 import Calculator from './widgets/Calculator'
 import SoundCloud from './widgets/Soundcloud'
+import { useState } from 'react'
 
-const importHandler = () => {
-  return (
-   <div className="widget"></div> 
-  )
+const addWidgetHandler = (e) => {
+  e.preventDefault();
+  setWidgets([...widgets, e.value]);
+  console.log(`${e.value} added!`)
+  console.log('widgets:', widgets)
 }
 
 function App() {
+const [widgets, setWidgets] = useState([])
+
+useEffect(() => {
+  first
+
+  return () => {
+    second
+  }
+}, [widgets])
+
 
   return (
     <div className="app">
-      <Calculator/>
-      <Clock/>
-      <SoundCloud/>
+      
+      
       <div className="add_widgets">
-        {/* bottom left of window. click for list. */}
+        <select onChange={addWidgetHandler} defaultValue="">
+          <option value="" disabled>Select a widget</option>
+          <option value="Clock">Clock</option>
+          <option value="Calculator">Calculator</option>
+          <option value="SoundCloud">SoundCloud</option>
+        </select>
       </div>
     </div>
   )
